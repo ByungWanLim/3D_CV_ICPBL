@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.backends.backend_pdf import PdfPages
+import os
 
 def create_optimal_calibration_chessboard(square_size_mm=25):
     """
@@ -121,6 +122,9 @@ def save_chessboard_files(fig, rows, cols, square_size_mm=25):
     """
     체스보드를 PDF와 PNG로 저장
     """
+    base_dir = "./checkerboard"
+    os.makedirs(base_dir, exist_ok=True)  # ✅ 디렉터리 생성 코드 추가
+    
     base_filename = f"./checkerboard/optimal_chessboard_{rows}x{cols}_{square_size_mm}mm"
     
     # PDF 저장 (고품질 출력용)
